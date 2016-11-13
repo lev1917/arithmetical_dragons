@@ -35,6 +35,8 @@ public:
     }
     void addScores(const int &scove){
     scores+=scove;}
+    int getScores(){
+    return scores;}
 };
 
 #endif // HERO_H_INCLUDED
