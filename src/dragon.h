@@ -16,7 +16,7 @@ public:
         :Unit(start_health, _attackForce), my_color(color)
     {}
 
-    std::string generateQuestion();
+    virtual std::string generateQuestion();
 
     bool checkAnswer(int answer) const
     {
@@ -49,7 +49,48 @@ public:
         return question.str();
     }
 };
+class RedDragon: public Dragon
+{
+  static const int c_redDragonHealth = 50;
+   static const int c_redDragonAttackForce = 5;
+public:
 
+    RedDragon()
+        :Dragon("Red", c_redDragonHealth,
+                 c_redDragonAttackForce)
+    {}
+    std::string generateQuestion()
+    {
+        int left = 1 + rand()%100;
+        int right = 1 + rand()%100;
+
+        std::stringstream question;
+        question << left << " - " << right << ": ";
+        my_answer = left - right;
+        return question.str();
+    }
+};
+class BlackDragon: public Dragon
+{
+  static const int c_blackDragonHealth = 50;
+   static const int c_blackDragonAttackForce = 5;
+public:
+
+    BlackDragon()
+        :Dragon("Black", c_blackDragonHealth,
+                 c_blackDragonAttackForce)
+    {}
+    std::string generateQuestion()
+    {
+        int left = 1 + rand()%100;
+        int right = 1 + rand()%100;
+
+        std::stringstream question;
+        question << left << " * " << right << ": ";
+        my_answer = left * right;
+        return question.str();
+    }
+};
 //class RedDragon;
 
 //class BlackDragon;
